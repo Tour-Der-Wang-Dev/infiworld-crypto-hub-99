@@ -20,16 +20,18 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <TooltipProvider>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/freelance" element={<Freelance />} />
-          <Route path="/marketplace" element={<Marketplace />} />
-          <Route path="/reservations" element={<Reservations />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/verify" element={<Verification />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="flex flex-col min-h-screen">
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/freelance" element={<Freelance />} />
+            <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/reservations" element={<Reservations />} />
+            <Route path="/map" element={<Map />} />
+            <Route path="/verify" element={<Verification />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
         <Toaster />
         <Sonner />
       </TooltipProvider>

@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ListingCardProps {
   listing: {
@@ -26,6 +27,7 @@ interface ListingCardProps {
 
 const ListingCard = ({ listing }: ListingCardProps) => {
   const [showDetails, setShowDetails] = useState(false);
+  const isMobile = useIsMobile();
 
   // Format price based on rental or sale
   const formattedPrice = new Intl.NumberFormat("th-TH").format(listing.price);
@@ -43,34 +45,34 @@ const ListingCard = ({ listing }: ListingCardProps) => {
             className="w-full h-full object-cover"
           />
         </AspectRatio>
-        <div className="absolute top-2 left-2 flex gap-2">
-          <Badge variant="default" className="bg-infi-green">
+        <div className="absolute top-2 left-2 flex gap-1 sm:gap-2">
+          <Badge variant="default" className="bg-infi-green text-xs">
             {listing.type === "car" ? "รถยนต์" : "อสังหาริมทรัพย์"}
           </Badge>
           {listing.isRental ? (
-            <Badge variant="outline" className="bg-white">เช่า</Badge>
+            <Badge variant="outline" className="bg-white text-xs">เช่า</Badge>
           ) : (
-            <Badge variant="outline" className="bg-white">ขาย</Badge>
+            <Badge variant="outline" className="bg-white text-xs">ขาย</Badge>
           )}
         </div>
       </div>
 
-      <CardHeader className="pb-2">
-        <div className="text-lg font-semibold line-clamp-1">{listing.title}</div>
-        <div className="text-sm text-infi-gray">{listing.location}</div>
+      <CardHeader className="pb-1 sm:pb-2 px-3 sm:px-4 pt-2 sm:pt-3">
+        <div className="text-base sm:text-lg font-semibold line-clamp-1">{listing.title}</div>
+        <div className="text-xs sm:text-sm text-infi-gray">{listing.location}</div>
       </CardHeader>
       
-      <CardContent className="flex-grow">
-        <div className="text-xl font-bold text-infi-green mb-2">
+      <CardContent className="flex-grow px-3 sm:px-4 py-1 sm:py-2">
+        <div className="text-lg sm:text-xl font-bold text-infi-green mb-1 sm:mb-2">
           {priceDisplay}
         </div>
-        <p className={`text-infi-gray text-sm ${showDetails ? '' : 'line-clamp-2'}`}>
+        <p className={`text-infi-gray text-xs sm:text-sm ${showDetails ? '' : 'line-clamp-2'}`}>
           {listing.description}
         </p>
         
         {showDetails && (
-          <div className="mt-4">
-            <div className="text-sm font-semibold mb-1">คุณสมบัติ:</div>
+          <div className="mt-3 sm:mt-4">
+            <div className="text-xs sm:text-sm font-semibold mb-1">คุณสมบัติ:</div>
             <div className="flex flex-wrap gap-1">
               {listing.features.map((feature, index) => (
                 <Badge key={index} variant="outline" className="text-xs">
@@ -82,15 +84,15 @@ const ListingCard = ({ listing }: ListingCardProps) => {
         )}
       </CardContent>
 
-      <CardFooter className="flex justify-between pt-0">
+      <CardFooter className="flex justify-between pt-0 px-3 sm:px-4 pb-3 sm:pb-4">
         <Button 
           variant="outline"
-          className="text-xs" 
+          className="text-xs h-8 sm:h-9" 
           onClick={() => setShowDetails(!showDetails)}
         >
           {showDetails ? "แสดงน้อยลง" : "ดูเพิ่มเติม"}
         </Button>
-        <Button className="text-xs bg-infi-green hover:bg-infi-green-hover">
+        <Button className="text-xs h-8 sm:h-9 bg-infi-green hover:bg-infi-green-hover">
           {listing.isRental ? "จองเช่า" : "ซื้อเลย"}
         </Button>
       </CardFooter>
