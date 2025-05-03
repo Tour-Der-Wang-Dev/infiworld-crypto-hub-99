@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                // InfiWorld custom colors
+                'infi-green': '#28a745',
+                'infi-green-hover': '#218838',
+                'infi-dark': '#343a40',
+                'infi-light': '#f8f9fa',
+                'infi-gray': '#6c757d',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +91,20 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+                'float': {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-10px)' },
+                },
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+                'float': 'float 6s ease-in-out infinite',
+			},
+            fontFamily: {
+                'sarabun': ['Sarabun', 'sans-serif'],
+            }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
