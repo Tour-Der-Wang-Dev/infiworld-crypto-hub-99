@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Freelance from "./pages/Freelance";
 import Marketplace from "./pages/Marketplace";
 import Reservations from "./pages/Reservations";
+import Map from "./pages/Map";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/freelance" element={<Freelance />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/reservations" element={<Reservations />} />
+          <Route path="/map" element={<Map />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

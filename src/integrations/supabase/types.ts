@@ -63,6 +63,51 @@ export type Database = {
         }
         Relationships: []
       }
+      stores: {
+        Row: {
+          accepted_crypto: string[]
+          address: string
+          category: string
+          created_at: string | null
+          id: string
+          latitude: number
+          longitude: number
+          name: string
+          opening_hours: string | null
+          phone: string | null
+          updated_at: string | null
+          website: string | null
+        }
+        Insert: {
+          accepted_crypto: string[]
+          address: string
+          category: string
+          created_at?: string | null
+          id?: string
+          latitude: number
+          longitude: number
+          name: string
+          opening_hours?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          website?: string | null
+        }
+        Update: {
+          accepted_crypto?: string[]
+          address?: string
+          category?: string
+          created_at?: string | null
+          id?: string
+          latitude?: number
+          longitude?: number
+          name?: string
+          opening_hours?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
