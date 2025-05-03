@@ -1,5 +1,17 @@
 
-export const listings = [
+interface Listing {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  type: "car" | "property";
+  image: string;
+  isRental: boolean;
+  location: string;
+  features: string[];
+}
+
+export const listings: Listing[] = [
   {
     id: "car-1",
     title: "Toyota Camry 2023",

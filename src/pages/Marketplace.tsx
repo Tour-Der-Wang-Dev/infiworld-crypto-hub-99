@@ -26,11 +26,11 @@ const Marketplace = () => {
   const [listingType, setListingType] = useState<ListingType>("all");
   const [priceRange, setPriceRange] = useState<PriceRange>("all");
   const [isRental, setIsRental] = useState<boolean | null>(null);
-  const [filteredListings, setFilteredListings] = useState<Listing[]>(listings);
+  const [filteredListings, setFilteredListings] = useState<Listing[]>(listings as Listing[]);
 
   // Filter listings based on selected filters
   useEffect(() => {
-    let results = [...listings];
+    let results = [...listings] as Listing[];
 
     // Filter by listing type
     if (listingType !== "all") {
