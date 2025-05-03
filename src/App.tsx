@@ -11,6 +11,7 @@ import Freelance from "./pages/Freelance";
 import Marketplace from "./pages/Marketplace";
 import Reservations from "./pages/Reservations";
 import Map from "./pages/Map";
+import Verification from "./pages/Verification";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/verify" element={<Verification />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

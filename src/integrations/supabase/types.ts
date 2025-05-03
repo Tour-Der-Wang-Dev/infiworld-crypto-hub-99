@@ -108,6 +108,39 @@ export type Database = {
         }
         Relationships: []
       }
+      verifications: {
+        Row: {
+          created_at: string | null
+          document_path: string
+          document_type: string
+          id: string
+          rejection_reason: string | null
+          status: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          document_path: string
+          document_type: string
+          id?: string
+          rejection_reason?: string | null
+          status?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          document_path?: string
+          document_type?: string
+          id?: string
+          rejection_reason?: string | null
+          status?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
