@@ -1,15 +1,20 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -51,7 +56,7 @@ const Navbar = () => {
           <Link to="/identity-verification" className="text-infi-dark hover:text-infi-green transition-colors">Verify</Link>
           <div className="flex items-center space-x-2">
             <Button variant="outline" size="sm">EN | TH</Button>
-            <Button className="bg-infi-green hover:bg-infi-green-hover">เข้าสู่ระบบ</Button>
+            <Button className="bg-infi-green hover:bg-infi-green-hover" onClick={handleLogin}>เข้าสู่ระบบ</Button>
           </div>
         </div>
       </nav>
@@ -67,7 +72,7 @@ const Navbar = () => {
             <Link to="/identity-verification" className="py-2 text-infi-dark hover:text-infi-green transition-colors">Verify</Link>
             <div className="flex flex-col space-y-2 pt-2">
               <Button variant="outline" size="sm" className="w-full justify-center">EN | TH</Button>
-              <Button className="w-full bg-infi-green hover:bg-infi-green-hover">เข้าสู่ระบบ</Button>
+              <Button className="w-full bg-infi-green hover:bg-infi-green-hover" onClick={handleLogin}>เข้าสู่ระบบ</Button>
             </div>
           </div>
         </div>
