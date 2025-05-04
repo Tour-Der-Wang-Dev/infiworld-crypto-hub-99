@@ -9,135 +9,92 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      reservations: {
+      comment: {
         Row: {
-          adults: number
-          booking_reference: string | null
-          children: number
-          created_at: string | null
-          departure_date: string
-          destination: string
+          content: string
+          content_id: string
+          created_at: string
           id: string
-          payment_intent: string | null
-          price: number
-          provider: string | null
-          return_date: string | null
-          status: string
-          type: string
-          updated_at: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
-          adults?: number
-          booking_reference?: string | null
-          children?: number
-          created_at?: string | null
-          departure_date: string
-          destination: string
+          content: string
+          content_id: string
+          created_at?: string
           id?: string
-          payment_intent?: string | null
-          price: number
-          provider?: string | null
-          return_date?: string | null
-          status?: string
-          type: string
-          updated_at?: string | null
-          user_id?: string | null
+          user_id: string
         }
         Update: {
-          adults?: number
-          booking_reference?: string | null
-          children?: number
-          created_at?: string | null
-          departure_date?: string
-          destination?: string
+          content?: string
+          content_id?: string
+          created_at?: string
           id?: string
-          payment_intent?: string | null
-          price?: number
-          provider?: string | null
-          return_date?: string | null
-          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comment_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "content"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      content: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          title: string
+          type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          title: string
+          type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          title?: string
           type?: string
-          updated_at?: string | null
-          user_id?: string | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
-      stores: {
+      profile: {
         Row: {
-          accepted_crypto: string[]
-          address: string
-          category: string
-          created_at: string | null
+          avatar_url: string | null
+          created_at: string
           id: string
-          latitude: number
-          longitude: number
-          name: string
-          opening_hours: string | null
-          phone: string | null
-          updated_at: string | null
-          website: string | null
+          line_id: string | null
+          updated_at: string
+          username: string | null
         }
         Insert: {
-          accepted_crypto: string[]
-          address: string
-          category: string
-          created_at?: string | null
-          id?: string
-          latitude: number
-          longitude: number
-          name: string
-          opening_hours?: string | null
-          phone?: string | null
-          updated_at?: string | null
-          website?: string | null
-        }
-        Update: {
-          accepted_crypto?: string[]
-          address?: string
-          category?: string
-          created_at?: string | null
-          id?: string
-          latitude?: number
-          longitude?: number
-          name?: string
-          opening_hours?: string | null
-          phone?: string | null
-          updated_at?: string | null
-          website?: string | null
-        }
-        Relationships: []
-      }
-      verifications: {
-        Row: {
-          created_at: string | null
-          document_path: string
-          document_type: string
+          avatar_url?: string | null
+          created_at?: string
           id: string
-          rejection_reason: string | null
-          status: string
-          updated_at: string | null
-          user_id: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          document_path: string
-          document_type: string
-          id?: string
-          rejection_reason?: string | null
-          status?: string
-          updated_at?: string | null
-          user_id?: string | null
+          line_id?: string | null
+          updated_at?: string
+          username?: string | null
         }
         Update: {
-          created_at?: string | null
-          document_path?: string
-          document_type?: string
+          avatar_url?: string | null
+          created_at?: string
           id?: string
-          rejection_reason?: string | null
-          status?: string
-          updated_at?: string | null
-          user_id?: string | null
+          line_id?: string | null
+          updated_at?: string
+          username?: string | null
         }
         Relationships: []
       }
