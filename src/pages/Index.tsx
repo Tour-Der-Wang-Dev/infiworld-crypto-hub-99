@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ServiceCard from "@/components/home/ServiceCard";
+import SEOHead from "@/components/seo/SEOHead";
 
 const Index = () => {
   const services = [
@@ -10,36 +11,41 @@ const Index = () => {
       icon: "https://placehold.co/200?text=👨‍💻",
       title: "Freelance",
       description: "จ้างฟรีแลนซ์มืออาชีพในทุกสาขา ได้งานมีคุณภาพ ชำระเงินง่ายด้วยคริปโต",
-      link: "/freelance"
+      link: "/freelance-services"
     },
     {
       icon: "https://placehold.co/200?text=🏠",
       title: "Marketplace",
       description: "ซื้อ ขาย เช่า รถและอสังหาริมทรัพย์ ปลอดภัย มั่นใจ ด้วยระบบ Smart Contract",
-      link: "/marketplace"
+      link: "/crypto-marketplace"
     },
     {
       icon: "https://placehold.co/200?text=✈️",
       title: "Reservations",
       description: "จองตั๋วเครื่องบินและโรงแรมทั่วโลก ราคาพิเศษเมื่อชำระด้วยคริปโต",
-      link: "/reservations"
+      link: "/travel-reservations"
     },
     {
       icon: "https://placehold.co/200?text=🗺️",
       title: "Map",
       description: "ค้นหาร้านค้าที่รับชำระด้วยคริปโตใกล้คุณ ง่ายและสะดวก",
-      link: "/map"
+      link: "/crypto-payment-locations"
     },
     {
       icon: "https://placehold.co/200?text=🔐",
       title: "Verify",
       description: "ตรวจสอบและยืนยันตัวตนด้วยระบบที่ปลอดภัย รองรับ KYC/AML",
-      link: "/verify"
+      link: "/identity-verification"
     }
   ];
 
   return (
     <>
+      <SEOHead 
+        title="INFIWORLD | ซื้อ ขาย เช่า จอง ด้วยคริปโตและบัตร"
+        description="แพลตฟอร์มครบวงจรที่รองรับการซื้อขายด้วยเงินสด บัตรเครดิต และคริปโตเคอเรนซี เพื่อตอบโจทย์ทุกความต้องการในโลกดิจิตอล"
+        canonicalUrl="/"
+      />
       <Navbar />
       <main>
         {/* Hero Section */}
@@ -54,7 +60,7 @@ const Index = () => {
                   แพลตฟอร์มครบวงจรที่รองรับการซื้อขายด้วยเงินสด บัตรเครดิต และคริปโตเคอเรนซี เพื่อตอบโจทย์ทุกความต้องการในโลกดิจิตอล
                 </p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                  <Link to="/freelance" className="btn-primary text-center">
+                  <Link to="/freelance-services" className="btn-primary text-center">
                     เริ่มต้นใช้งาน
                   </Link>
                   <a href="#services" className="btn-secondary text-center">
