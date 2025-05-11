@@ -9,92 +9,577 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      comment: {
+      escrow_transactions: {
         Row: {
-          content: string
-          content_id: string
+          buyer_id: string
+          contract_details: Json | null
           created_at: string
+          escrow_status: string
           id: string
-          user_id: string
+          payment_id: string
+          release_conditions: string | null
+          release_date: string | null
+          seller_id: string
+          updated_at: string
         }
         Insert: {
-          content: string
-          content_id: string
+          buyer_id: string
+          contract_details?: Json | null
           created_at?: string
+          escrow_status?: string
           id?: string
-          user_id: string
+          payment_id: string
+          release_conditions?: string | null
+          release_date?: string | null
+          seller_id: string
+          updated_at?: string
         }
         Update: {
-          content?: string
-          content_id?: string
+          buyer_id?: string
+          contract_details?: Json | null
           created_at?: string
+          escrow_status?: string
           id?: string
-          user_id?: string
+          payment_id?: string
+          release_conditions?: string | null
+          release_date?: string | null
+          seller_id?: string
+          updated_at?: string
         }
         Relationships: [
           {
-            foreignKeyName: "comment_content_id_fkey"
-            columns: ["content_id"]
+            foreignKeyName: "escrow_transactions_payment_id_fkey"
+            columns: ["payment_id"]
             isOneToOne: false
-            referencedRelation: "content"
+            referencedRelation: "payments"
             referencedColumns: ["id"]
           },
         ]
       }
-      content: {
+      favorites: {
+        Row: {
+          created_at: string | null
+          id: string
+          listing_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          listing_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          listing_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_listing_id_fkey"
+            columns: ["listing_id"]
+            isOneToOne: false
+            referencedRelation: "listings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "favorites_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      infiworld: {
         Row: {
           created_at: string
-          description: string | null
+          id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+        }
+        Relationships: []
+      }
+      listing_views: {
+        Row: {
           id: string
+          listing_id: string
+          viewed_at: string | null
+          viewer_id: string | null
+        }
+        Insert: {
+          id?: string
+          listing_id: string
+          viewed_at?: string | null
+          viewer_id?: string | null
+        }
+        Update: {
+          id?: string
+          listing_id?: string
+          viewed_at?: string | null
+          viewer_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "listing_views_listing_id_fkey"
+            columns: ["listing_id"]
+            isOneToOne: false
+            referencedRelation: "listings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "listing_views_viewer_id_fkey"
+            columns: ["viewer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      listings: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          features: Json | null
+          id: string
+          images: string[] | null
+          is_rental: boolean | null
+          location: string
+          price: number
+          seller_id: string | null
+          status: string | null
           title: string
           type: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          features?: Json | null
+          id?: string
+          images?: string[] | null
+          is_rental?: boolean | null
+          location: string
+          price: number
+          seller_id?: string | null
+          status?: string | null
+          title: string
+          type: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          features?: Json | null
+          id?: string
+          images?: string[] | null
+          is_rental?: boolean | null
+          location?: string
+          price?: number
+          seller_id?: string | null
+          status?: string | null
+          title?: string
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "listings_seller_id_fkey"
+            columns: ["seller_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      payment_consents: {
+        Row: {
+          consent_version: string
+          consented_at: string
+          id: string
+          ip_address: string | null
+          user_id: string
+        }
+        Insert: {
+          consent_version?: string
+          consented_at?: string
+          id?: string
+          ip_address?: string | null
+          user_id: string
+        }
+        Update: {
+          consent_version?: string
+          consented_at?: string
+          id?: string
+          ip_address?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string
+          currency: string
+          id: string
+          payment_details: Json | null
+          payment_method: string
+          payment_status: string
+          receipt_url: string | null
+          refund_status: string | null
+          refunded_amount: number | null
+          related_id: string
+          related_type: string
           updated_at: string
           user_id: string
         }
         Insert: {
+          amount: number
           created_at?: string
-          description?: string | null
+          currency?: string
           id?: string
-          title: string
-          type: string
+          payment_details?: Json | null
+          payment_method: string
+          payment_status?: string
+          receipt_url?: string | null
+          refund_status?: string | null
+          refunded_amount?: number | null
+          related_id: string
+          related_type: string
           updated_at?: string
           user_id: string
         }
         Update: {
+          amount?: number
           created_at?: string
-          description?: string | null
+          currency?: string
           id?: string
-          title?: string
-          type?: string
+          payment_details?: Json | null
+          payment_method?: string
+          payment_status?: string
+          receipt_url?: string | null
+          refund_status?: string | null
+          refunded_amount?: number | null
+          related_id?: string
+          related_type?: string
           updated_at?: string
           user_id?: string
         }
         Relationships: []
       }
-      profile: {
+      profiles: {
         Row: {
-          avatar_url: string | null
-          created_at: string
+          created_at: string | null
+          first_name: string | null
           id: string
-          line_id: string | null
-          updated_at: string
-          username: string | null
+          last_name: string | null
+          payment_consent_status: string | null
+          phone: string | null
+          profile_image: string | null
+          role: string | null
         }
         Insert: {
-          avatar_url?: string | null
-          created_at?: string
+          created_at?: string | null
+          first_name?: string | null
           id: string
-          line_id?: string | null
-          updated_at?: string
-          username?: string | null
+          last_name?: string | null
+          payment_consent_status?: string | null
+          phone?: string | null
+          profile_image?: string | null
+          role?: string | null
         }
         Update: {
-          avatar_url?: string | null
-          created_at?: string
+          created_at?: string | null
+          first_name?: string | null
           id?: string
-          line_id?: string | null
+          last_name?: string | null
+          payment_consent_status?: string | null
+          phone?: string | null
+          profile_image?: string | null
+          role?: string | null
+        }
+        Relationships: []
+      }
+      reservations: {
+        Row: {
+          adults: number
+          booking_reference: string | null
+          children: number
+          created_at: string | null
+          departure_date: string
+          destination: string
+          id: string
+          price: number
+          provider: string
+          return_date: string | null
+          status: string
+          type: string
+          user_id: string | null
+        }
+        Insert: {
+          adults?: number
+          booking_reference?: string | null
+          children?: number
+          created_at?: string | null
+          departure_date: string
+          destination: string
+          id?: string
+          price: number
+          provider: string
+          return_date?: string | null
+          status?: string
+          type: string
+          user_id?: string | null
+        }
+        Update: {
+          adults?: number
+          booking_reference?: string | null
+          children?: number
+          created_at?: string | null
+          departure_date?: string
+          destination?: string
+          id?: string
+          price?: number
+          provider?: string
+          return_date?: string | null
+          status?: string
+          type?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          comment: string | null
+          created_at: string | null
+          id: string
+          rating: number
+          reviewer_id: string | null
+          store_id: string
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string | null
+          id?: string
+          rating: number
+          reviewer_id?: string | null
+          store_id: string
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string | null
+          id?: string
+          rating?: number
+          reviewer_id?: string | null
+          store_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_reviewer_id_fkey"
+            columns: ["reviewer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reviews_store_id_fkey"
+            columns: ["store_id"]
+            isOneToOne: false
+            referencedRelation: "stores"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      stores: {
+        Row: {
+          accepted_crypto: string[]
+          address: string
+          category: string | null
+          created_at: string | null
+          id: string
+          latitude: number
+          longitude: number
+          name: string
+          opening_hours: string | null
+          phone: string | null
+          website: string | null
+        }
+        Insert: {
+          accepted_crypto?: string[]
+          address: string
+          category?: string | null
+          created_at?: string | null
+          id?: string
+          latitude: number
+          longitude: number
+          name: string
+          opening_hours?: string | null
+          phone?: string | null
+          website?: string | null
+        }
+        Update: {
+          accepted_crypto?: string[]
+          address?: string
+          category?: string | null
+          created_at?: string | null
+          id?: string
+          latitude?: number
+          longitude?: number
+          name?: string
+          opening_hours?: string | null
+          phone?: string | null
+          website?: string | null
+        }
+        Relationships: []
+      }
+      table_name: {
+        Row: {
+          data: Json | null
+          id: number
+          inserted_at: string
+          name: string | null
+          updated_at: string
+        }
+        Insert: {
+          data?: Json | null
+          id?: number
+          inserted_at?: string
+          name?: string | null
           updated_at?: string
-          username?: string | null
+        }
+        Update: {
+          data?: Json | null
+          id?: number
+          inserted_at?: string
+          name?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number
+          buyer_id: string | null
+          created_at: string | null
+          currency: string | null
+          id: string
+          listing_id: string | null
+          payment_details: Json | null
+          payment_method: string | null
+          seller_id: string | null
+          status: string | null
+        }
+        Insert: {
+          amount: number
+          buyer_id?: string | null
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          listing_id?: string | null
+          payment_details?: Json | null
+          payment_method?: string | null
+          seller_id?: string | null
+          status?: string | null
+        }
+        Update: {
+          amount?: number
+          buyer_id?: string | null
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          listing_id?: string | null
+          payment_details?: Json | null
+          payment_method?: string | null
+          seller_id?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "transactions_buyer_id_fkey"
+            columns: ["buyer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "transactions_listing_id_fkey"
+            columns: ["listing_id"]
+            isOneToOne: false
+            referencedRelation: "listings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "transactions_seller_id_fkey"
+            columns: ["seller_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_preferences: {
+        Row: {
+          currency: string | null
+          id: string
+          language: string | null
+          notification_settings: Json | null
+          user_id: string
+        }
+        Insert: {
+          currency?: string | null
+          id?: string
+          language?: string | null
+          notification_settings?: Json | null
+          user_id: string
+        }
+        Update: {
+          currency?: string | null
+          id?: string
+          language?: string | null
+          notification_settings?: Json | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_preferences_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      verifications: {
+        Row: {
+          created_at: string | null
+          document_path: string
+          document_type: string
+          id: string
+          rejection_reason: string | null
+          status: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          document_path: string
+          document_type: string
+          id?: string
+          rejection_reason?: string | null
+          status?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          document_path?: string
+          document_type?: string
+          id?: string
+          rejection_reason?: string | null
+          status?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -103,7 +588,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_admin: {
+        Args: { user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
