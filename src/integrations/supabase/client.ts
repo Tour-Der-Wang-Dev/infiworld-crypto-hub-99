@@ -23,6 +23,11 @@ export const supabase = createClient<Database>(
       autoRefreshToken: true,
       detectSessionInUrl: true,
     },
+    global: {
+      headers: {
+        'x-application-name': 'infiworld-crypto-hub',
+      },
+    },
   }
 );
 
@@ -36,4 +41,25 @@ export const handleSupabaseError = (error: Error | null, fallbackMessage = 'An e
     };
   }
   return { isError: false };
+};
+
+// Function to safely execute Supabase queries with proper error handling
+export const safeQuery = async <T>(
+  queryFn: () => Promise<{ data: T | null; error: Error | null }>,
+  errorMessage = 'Failed to execute query'
+): Promise<{ data: T | null; error: string | null }> => {
+  try {
+    const { data, error } = await queryFn();
+    
+    if (error) {
+      console.error('Supabase query error:', error);
+      return { data: null, error: error.message || errorMessage };
+    }
+    
+    return { data, error: null };
+  } catch (err) {
+    const error = err as Error;
+    console.error('Unexpected error during Supabase query:', error);
+    return { data: null, error: error.message || errorMessage };
+  }
 };
