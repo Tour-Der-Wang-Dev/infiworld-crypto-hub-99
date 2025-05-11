@@ -1,73 +1,114 @@
-# Welcome to your Lovable project
 
-## Project info
+# InfiWorld Crypto Hub
 
-**URL**: https://lovable.dev/projects/7c2bf093-8ab0-41fd-ab83-dd08896df6ad
+A comprehensive platform connecting cryptocurrency users with services, marketplace listings, and physical locations that accept crypto payments.
 
-## How can I edit this code?
+## 🌟 Features
 
-There are several ways of editing your application.
+- **Crypto Payment Locations Map**: Find stores, restaurants, and services that accept cryptocurrency payments
+- **Crypto Marketplace**: Buy and sell items using cryptocurrency
+- **Freelance Services**: Hire professionals who accept cryptocurrency payments
+- **Travel Reservations**: Book travel accommodations with cryptocurrency
+- **Identity Verification**: KYC process for enhanced security
 
-**Use Lovable**
+## 🚀 Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7c2bf093-8ab0-41fd-ab83-dd08896df6ad) and start prompting.
+### Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- Node.js (v16 or later)
+- npm or bun package manager
+- Supabase account
+- Mapbox API key
 
-**Use your preferred IDE**
+### Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd infiworld-crypto-hub
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies:
+```bash
+npm install
+# or
+bun install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. Environment setup:
+   - Create a `.env` file in the root directory
+   - Add the following variables:
+```
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+VITE_SUPABASE_URL=https://your-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+MAPBOX_TOKEN=your-mapbox-token
+```
 
-**Use GitHub Codespaces**
+4. Start the development server:
+```bash
+npm run dev
+# or
+bun dev
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+5. Open [http://localhost:8080](http://localhost:8080) in your browser to see the application.
 
-## What technologies are used for this project?
+## 🛠️ Technologies Used
 
-This project is built with:
+- **Frontend Framework**: React with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Backend**: Supabase (Authentication, Database, Storage)
+- **Maps**: Mapbox
+- **State Management**: React Query with TanStack
+- **Routing**: React Router
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🧪 Testing
 
-## How can I deploy this project?
+Run tests with:
 
-Simply open [Lovable](https://lovable.dev/projects/7c2bf093-8ab0-41fd-ab83-dd08896df6ad) and click on Share -> Publish.
+```bash
+npm test
+# or
+bun test
+```
 
-## Can I connect a custom domain to my Lovable project?
+## 🚢 Deployment
 
-Yes, you can!
+The app can be deployed using the built-in deployment feature in Lovable.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Navigate to Project > Settings > Deployment
+2. Click "Deploy" to build and deploy your application
+3. For custom domains, follow the instructions in the Lovable documentation
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🤝 Contributing
+
+We welcome contributions to InfiWorld Crypto Hub! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add some amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+### Coding Standards
+
+- Follow the existing code style
+- Write meaningful commit messages
+- Update documentation when necessary
+- Add tests for new features
+
+## 📃 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgements
+
+- [Supabase](https://supabase.com) for backend services
+- [Mapbox](https://mapbox.com) for mapping functionality
+- [shadcn/ui](https://ui.shadcn.com) for UI components
+- [Tailwind CSS](https://tailwindcss.com) for styling
